@@ -5,7 +5,7 @@ NUM_CLASS = 10
 IMAGE_SIZE = 28
 IMAGE_PIXEL = IMAGE_SIZE * IMAGE_SIZE
 
-mnist = input_data.read_data_sets("/MNIST/",one_hot=True)
+mnist = input_data.read_data_sets("./MNIST/",one_hot=True)
 sess = tf.InteractiveSession()
 
 x = tf.placeholder(tf.float32, [None,IMAGE_PIXEL])
@@ -25,4 +25,5 @@ for i in range(1000):
 correct_prediction = tf.equal(tf.argmax(y,1),tf.argmax(y_,1))
 accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 print(accuracy.eval({x:mnist.test.images, y_:mnist.test.labels}))
+
 
