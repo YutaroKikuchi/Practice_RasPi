@@ -47,4 +47,4 @@ RUN mkdir /home/workplace/mnist/MNIST
 COPY mnist.py /home/workplace/mnist
 COPY input_data.py /home/workplace/mnist
 COPY MNIST /home/workplace/mnist/MNIST
-CMD /bin/bash
+CMD python3 mnist/mnist.py
