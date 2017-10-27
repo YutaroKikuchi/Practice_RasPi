@@ -1,14 +1,14 @@
 from sense_hat import SenseHat
 import time
 
-r = [255,0,0]
-b = [0,0,0]
+O = [255,0,0]
+X = [0,0,0]
 
 sense = SenseHat()
 
 sense.clear()
 
-sense.show_message("Hello ( ¥^ o ¥^ )")
+sense.show_message("Hello")
 
 time.sleep(1)
 
