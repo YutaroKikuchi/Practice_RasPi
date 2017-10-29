@@ -2,7 +2,7 @@ from sense_hat import SenseHat
 import time
 import scipy as sc
 
-V_MAX = 5.0
+V_MAX = 4.0
 
 sense = SenseHat()
 
@@ -14,15 +14,38 @@ def led_x(velocity):
     velocity_abs = abs(velocity)
     velocity_abs = round(velocity_abs,0)
 
-    level = velocity_abs / 5.0
+    if velocity < 0:
+        level = -level
 
-    pix = 0
-    while(pix <= level):
-        if velocity < 0:
-            pix = pix * -1
+    if level == -4.0:
+        pix = [True,True,True,True,False,False,False,False]
+    elif level = -3.0:
+        pix = [False,True,True,True,False,False,False,False]
+    elif level = -2.0:
+        pix = [False,False,True,True,False,False,False,False]
+    elif level = -1.0:
+        pix = [False,False,False,True,False,False,False,False]
+    elif level = 0.0:
+        pix = [False,False,False,False,False,False,False,False]
+    elif level = 1.0:
+        pix = [False,False,False,False,True,False,False,False]
+    elif level = 2.0:
+        pix = [False,False,False,False,True,True,False,False]
+    elif level = 3.0:
+        pix = [False,False,False,False,True,True,True,False]
+    elif level = 4.0:
+        pix = [False,False,False,False,True,True,True,True]
+    else:
+        pix = [True for i in range(8)]
+    
+    for i in range(8):
 
-        sense.set_pixel(3,pix+4,255,0,0)
-        sense.set_pixel(4,pix+4,255,0,0)
+        if pix[i] == True:
+            sense.set_pixel(i,3,255,0,0)
+            sense.set_pixel(i,4,255,0,0)
+        else:
+            sense.set_pixel(i,3,0,0,0)
+            sense.set_pixel(i,4,0,0,0)
 
 def getVelocity(pre, cur, diff):
 
